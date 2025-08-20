@@ -1,6 +1,10 @@
-# React Google Translate Fix - Chrome Extension
+<div align="left">
+  <a href="./README_CN.md">简体中文</a>
+</div>
 
-This Chrome extension fixes the long-standing compatibility issues between Google Translate and React (and other modern JavaScript frameworks) that have been plaguing developers since 2018.
+# Translate Crash Fix - Chrome Extension
+
+This Chrome extension fixes the long-standing compatibility issues between Google Translate(including other translation plugins) and React (and other modern JavaScript frameworks) that have been plaguing user and developers since 2018.
 
 ## The Problem
 
@@ -13,8 +17,28 @@ Google Translate breaks React applications by:
 
 This results in errors like:
 ```
+Application error: a client-side exception has occurred while loading xxx.com (see the browser console for more information).
+```
+or
+```
 DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
 ```
+
+## Features
+
+✅ **Prevents React Crashes**: solves the "a client-side exception has occurred while loading" errors  
+✅ **Framework Agnostic**: Works with React, Vue, Angular, Svelte, and others  
+✅ **Zero Configuration**: Works automatically after installation  
+✅ **Performance Optimized**: Minimal overhead, only activates when needed  
+✅ **Debug Interface**: Popup shows status and debug information  
+✅ **Error Recovery**: Gracefully handles edge cases and provides fallbacks  
+
+## Compatibility
+
+- **Chrome Version**: 88+ (Manifest V3)
+- **Websites**: All websites (activates automatically)
+- **Frameworks**: React, Vue, Angular, Svelte, Solid.js, and others
+- **Google Translate**: All translation features work normally
 
 ## The Solution
 
@@ -36,20 +60,6 @@ This extension provides a comprehensive fix by:
 4. Click "Load unpacked" and select the extension directory
 5. The extension will be loaded and active on all websites
 
-### File Structure
-
-```
-react-google-translate-fix/
-├── manifest.json          # Extension configuration
-├── content.js            # Content script injection
-├── inject.js             # Main fix implementation
-├── popup.html            # Extension popup interface
-├── popup.js              # Popup functionality
-├── icon16.png            # Extension icons (16x16)
-├── icon48.png            # Extension icons (48x48)
-├── icon128.png           # Extension icons (128x128)
-└── README.md             # This file
-```
 
 ## How It Works
 
@@ -84,36 +94,6 @@ When DOM operations fail, the extension provides safe fallbacks:
 - `insertBefore` falls back to `appendChild` when reference nodes are missing
 - `replaceChild` attempts append operations when replacement fails
 
-## Features
-
-✅ **Prevents React Crashes**: Stops the "node to be removed is not a child" errors  
-✅ **Framework Agnostic**: Works with React, Vue, Angular, Svelte, and others  
-✅ **Zero Configuration**: Works automatically after installation  
-✅ **Performance Optimized**: Minimal overhead, only activates when needed  
-✅ **Debug Interface**: Popup shows status and debug information  
-✅ **Error Recovery**: Gracefully handles edge cases and provides fallbacks  
-
-## Testing
-
-The extension includes a built-in test feature accessible from the popup:
-
-1. Click the extension icon in the toolbar
-2. Click "Test Fix" to run DOM manipulation tests
-3. Check the browser console for test results
-
-You can also test manually:
-
-1. Visit a React website (like [CodeSandbox](https://codesandbox.io/))
-2. Enable Google Translate and translate the page
-3. Interact with the website - it should work normally without crashes
-
-## Compatibility
-
-- **Chrome Version**: 88+ (Manifest V3)
-- **Websites**: All websites (activates automatically)
-- **Frameworks**: React, Vue, Angular, Svelte, Solid.js, and others
-- **Google Translate**: All translation features work normally
-
 ## Troubleshooting
 
 ### Extension Not Working
@@ -121,12 +101,6 @@ You can also test manually:
 1. Check that the extension is enabled in `chrome://extensions/`
 2. Refresh the page after installing the extension
 3. Check the extension popup for status information
-
-### Still Getting Errors
-
-1. Open the extension popup and click "Refresh" to check status
-2. Look for console messages starting with `[React Google Translate Fix]`
-3. Try the "Test Fix" button to verify functionality
 
 ### Reporting Issues
 
@@ -178,7 +152,7 @@ The extension has minimal performance impact:
 
 ## Version History
 
-- **v1.0.0**: Initial release with comprehensive DOM manipulation fixes
+- **v1.1.0**: Current version with comprehensive DOM manipulation fixes
 
 ## License
 
