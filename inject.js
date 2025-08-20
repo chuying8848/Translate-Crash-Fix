@@ -8,7 +8,7 @@
   }
   window.__reactGoogleTranslateFix = true;
 
-  console.log('[React Google Translate Fix] Initializing...');
+  console.log('[Translate Crash Fix] Initializing...');
 
   // Store original methods
   const originalRemoveChild = Node.prototype.removeChild;
@@ -25,13 +25,13 @@
     try {
       // Check if the child is actually a child of this node
       if (!this.contains(child)) {
-        console.warn('[React Google Translate Fix] Attempted to remove non-child node, ignoring');
+        console.warn('[Translate Crash Fix] Attempted to remove non-child node, ignoring');
         return child;
       }
       return originalRemoveChild.call(this, child);
     } catch (error) {
       if (error.name === 'NotFoundError' || error.message.includes('not a child')) {
-        console.warn('[React Google Translate Fix] RemoveChild error caught and handled:', error.message);
+        console.warn('[Translate Crash Fix] RemoveChild error caught and handled:', error.message);
         return child;
       }
       throw error;
@@ -48,18 +48,18 @@
       
       // Check if referenceNode is actually a child of this node
       if (!this.contains(referenceNode)) {
-        console.warn('[React Google Translate Fix] Reference node not found, appending instead');
+        console.warn('[Translate Crash Fix] Reference node not found, appending instead');
         return this.appendChild(newNode);
       }
       
       return originalInsertBefore.call(this, newNode, referenceNode);
     } catch (error) {
       if (error.name === 'NotFoundError' || error.message.includes('not a child')) {
-        console.warn('[React Google Translate Fix] InsertBefore error caught, appending instead:', error.message);
+        console.warn('[Translate Crash Fix] InsertBefore error caught, appending instead:', error.message);
         try {
           return this.appendChild(newNode);
         } catch (appendError) {
-          console.warn('[React Google Translate Fix] AppendChild also failed:', appendError.message);
+          console.warn('[Translate Crash Fix] AppendChild also failed:', appendError.message);
           return newNode;
         }
       }
@@ -72,17 +72,17 @@
     try {
       // Check if oldChild is actually a child of this node
       if (!this.contains(oldChild)) {
-        console.warn('[React Google Translate Fix] Old child not found, appending new child instead');
+        console.warn('[Translate Crash Fix] Old child not found, appending new child instead');
         return this.appendChild(newChild);
       }
       return originalReplaceChild.call(this, newChild, oldChild);
     } catch (error) {
       if (error.name === 'NotFoundError' || error.message.includes('not a child')) {
-        console.warn('[React Google Translate Fix] ReplaceChild error caught:', error.message);
+        console.warn('[Translate Crash Fix] ReplaceChild error caught:', error.message);
         try {
           return this.appendChild(newChild);
         } catch (appendError) {
-          console.warn('[React Google Translate Fix] AppendChild fallback failed:', appendError.message);
+          console.warn('[Translate Crash Fix] AppendChild fallback failed:', appendError.message);
           return newChild;
         }
       }
@@ -106,7 +106,7 @@
         try {
           return originalSetAttribute.call(this, name, value);
         } catch (error) {
-          console.warn('[React Google Translate Fix] SetAttribute error caught:', error.message);
+          console.warn('[Translate Crash Fix] SetAttribute error caught:', error.message);
         }
       };
     }
@@ -187,7 +187,7 @@
       translatedNodes.add(fontElement);
 
     } catch (error) {
-      console.warn('[React Google Translate Fix] Error handling font element:', error);
+      console.warn('[Translate Crash Fix] Error handling font element:', error);
     }
   }
 
@@ -203,7 +203,7 @@
         textNodeMap.set(textNode, textNode.textContent);
       }
     } catch (error) {
-      console.warn('[React Google Translate Fix] Error handling text node change:', error);
+      console.warn('[Translate Crash Fix] Error handling text node change:', error);
     }
   }
 
@@ -214,12 +214,12 @@
       // Don't normalize if this node or its children contain translated content
       const hasTranslatedContent = this.querySelector && this.querySelector('font[style*="background-color"]');
       if (hasTranslatedContent) {
-        console.warn('[React Google Translate Fix] Skipping normalization of translated content');
+        console.warn('[Translate Crash Fix] Skipping normalization of translated content');
         return;
       }
       return originalNormalize.call(this);
     } catch (error) {
-      console.warn('[React Google Translate Fix] Normalization error:', error);
+      console.warn('[Translate Crash Fix] Normalization error:', error);
     }
   };
 
@@ -231,7 +231,7 @@
       error.message.includes('insertBefore') ||
       error.message.includes('not a child')
     )) {
-      console.warn('[React Google Translate Fix] DOM manipulation error caught:', error.message);
+      console.warn('[Translate Crash Fix] DOM manipulation error caught:', error.message);
       event.preventDefault();
       return false;
     }
@@ -249,11 +249,11 @@
   // Also initialize immediately for early translate attempts
   observeGoogleTranslate();
 
-  console.log('[React Google Translate Fix] Successfully initialized');
+  console.log('[Translate Crash Fix] Successfully initialized');
 
   // Add a marker to help detect if DOM methods are patched
   if (Node.prototype.removeChild.toString().includes('React Google Translate Fix')) {
-    console.log('[React Google Translate Fix] DOM methods successfully patched');
+    console.log('[Translate Crash Fix] DOM methods successfully patched');
   }
 
   // Expose debug information
