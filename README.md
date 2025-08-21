@@ -19,6 +19,7 @@ This results in errors like:
 ```
 Application error: a client-side exception has occurred while loading xxx.com (see the browser console for more information).
 ```
+![crashExample](./crash_example.png)
 or
 ```
 DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
