@@ -16,10 +16,10 @@ Google Translate breaks React applications by:
 4. **Normalization Problems**: DOM tree normalization breaks React's text node boundaries
 
 This results in errors like:
+![crashExample](./crash_example.png)
 ```
 Application error: a client-side exception has occurred while loading xxx.com (see the browser console for more information).
 ```
-![crashExample](./crash_example.png)
 or
 ```
 DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
