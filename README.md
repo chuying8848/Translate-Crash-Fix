@@ -53,6 +53,12 @@ This extension provides a comprehensive fix by:
 
 ## Installation
 
+### Browser extension store
+
+  - [x] Edge [Installation address](https://microsoftedge.microsoft.com/addons/detail/nljanbkbbghffgfmafgifpfkajihocfp)
+  - [ ] Chrome Reviewing......
+  - [ ] Safari No plan for now.
+
 ### From Source (Development)
 
 1. Download or clone this repository
