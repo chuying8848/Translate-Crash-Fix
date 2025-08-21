@@ -53,6 +53,12 @@ DOMException: 在 'Node' 上执行 'removeChild' 失败：要删除的节点不�
 
 ## 安装
 
+### 浏览器官方商店
+
+  - [x] Edge [点击此处去安装](https://microsoftedge.microsoft.com/addons/detail/nljanbkbbghffgfmafgifpfkajihocfp)
+  - [ ] Chrome 审核中，即将上线......
+  - [ ] Safari 暂无计划.
+
 ### 从源码安装（开发）
 
 1. 下载或克隆此仓库
@@ -161,4 +167,5 @@ MIT 许可证 - 可自由使用、修改和分发。
 ---
 
 **注意**：此扩展解决了 Google 翻译与现代 JavaScript 框架之间 6 年之久的兼容性问题。它被设计为临时解决方案，直到 Google 在 Chrome 本身中解决根本原因。
+
 
