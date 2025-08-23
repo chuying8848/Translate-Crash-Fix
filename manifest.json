@@ -3,10 +3,7 @@
   "name": "Translate Crash Fix",
   "version": "1.1.0",
   "description": "Fixes Google Translate compatibility issues with React and other modern JavaScript frameworks",
-  "permissions": [
-    "activeTab",
-    "scripting"
-  ],
+  "permissions": [],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
@@ -30,4 +27,5 @@
       "matches": ["<all_urls>"]
     }
   ]
+
 }
